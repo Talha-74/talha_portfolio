@@ -27,7 +27,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#blog-page">Blog <i class="fas fa-angle-down"></i></a>
                     <ul class="sub_menu">
-                        <li><a href="blog.html">Blog Grid</a></li>
+                        <li><a href="{{ url('/blog') }}">Blog Grid</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
