@@ -26,38 +26,54 @@
                         <h4>Update Hero Section</h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.hero.update', 1) }}" method="POST">
+                        <form action="{{ route('admin.hero.update', 1) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <input type="text" name="title" class="form-control">
+                                    <input type="text" name="title" class="form-control" value="{{ $hero->title }}">
                                 </div>
                             </div>
 
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sub Title</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <textarea cols="50" rows="10" name="sub_title" style="height: 100px;"
-                                        class="form-control"></textarea>
+                                    <textarea name="sub_title" style="height: 100px;"
+                                        class="form-control">{{ $hero->sub_title }}</textarea>
                                 </div>
                             </div>
 
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Button Text</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <input type="text" name="btn_text" class="form-control">
+                                    <input type="text" name="btn_text" class="form-control"
+                                        value="{{ $hero->btn_text }}">
                                 </div>
                             </div>
 
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Button URL</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <input type="text" name="btn_url" class="form-control">
+                                    <input type="text" name="btn_url" class="form-control" value="{{ $hero->btn_url }}">
                                 </div>
                             </div>
 
+                         @if($hero->image)
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Previous Image/PDF</label>
+                            <div class="col-sm-12 col-md-7">
+                                @if (in_array(pathinfo($hero->image, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif']))
+                                <img class="w-30" src="{{ asset($hero->image) }}" alt="">
+                                @elseif (pathinfo($hero->image, PATHINFO_EXTENSION) === 'pdf')
+                                <iframe src="{{ asset($hero->image) }}" style="width:100%; height:500px;" frameborder="0"></iframe>
+                                @else
+                                <p>Unsupported file type.</p>
+                                @endif
+                            </div>
+                        </div>
+                        @endif
+                            {{-- {{ dd(asset($hero->image)) }} --}}
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Background
                                     Image</label>
