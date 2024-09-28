@@ -60,10 +60,10 @@ class HeroController extends Controller
             'sub_title' => 'required'
         ]);
 
-        $imagePath = null;
-
+        $hero = Hero::first();
+        $imagePath = $hero ? $hero->image : null;
+        
         if ($request->hasFile('image')) {
-            $hero = Hero::first();
             if ($hero && File::exists(public_path($hero->image))) {
                 File::delete(public_path($hero->image));
             }
