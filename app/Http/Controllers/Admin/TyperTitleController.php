@@ -33,6 +33,8 @@ class TyperTitleController extends Controller
         return redirect()->route('admin.typer-title.index');
     }
 
+    public function show() {}
+
     public function edit(TyperTitle $typer_title) {
         return view('admin.typer-title.edit', ['title' => $typer_title]);
      }
@@ -50,10 +52,14 @@ class TyperTitleController extends Controller
         return redirect()->route('admin.typer-title.index');
      }
 
-     public function destroy(TyperTitle $title) {
-        $title->delete();
+    public function destroy($id)
+    {
+        $typerTitle = TyperTitle::find($id);
+        if ($typerTitle) {
+            $typerTitle->delete();
+            return response()->json(['success' => 'Deleted successfully']);
+        }
+        return response()->json(['error' => 'Item not found'], 404);
+    }
 
-        toastr()->success('Deleted Successfully');
-        return redirect()->back();
-     }
 }
