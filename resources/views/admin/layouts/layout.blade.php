@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Dashboard</title>
 
     <!-- General CSS Files -->
@@ -36,13 +37,20 @@
                 @yield('content')
 
             </div>
-            <footer class="main-footer">
-                <div class="footer-left">
-                    Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad
-                        Nauval Azhar</a>
-                </div>
-                <div class="footer-right">
-                    2.3.0
+            <footer class="main-footer bg-light py-3">
+                <div class="container text-center">
+                    <div class="footer-content">
+                        <span class="text-center">
+                            &copy; 2024 <span class="bullet"></span> Designed with <span
+                                class="text-danger">&hearts;</span> by
+                            <a href="https://github.com/Talha-74" target="_blank" class="text-decoration-none">Talha
+                                Khan</a>
+                        </span>
+                        <br>
+                        <span class="footer-right text-muted">
+                            Version 2.3.0
+                        </span>
+                    </div>
                 </div>
             </footer>
         </div>
@@ -91,7 +99,51 @@
             @endforeach
         @endif
     </script>
+
+    <script>
+        $('body').on('click', '.delete-item', function (e) {
+            e.preventDefault();
+            let deleteUrl = $(this).attr('href');
+            let csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+            console.log('Delete URL:', deleteUrl);
+            console.log('CSRF Token:', csrfToken);
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "DELETE",
+                        url: deleteUrl,
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken // Ensure CSRF token is sent
+                        },
+                        success: function (data) {
+                            Swal.fire(
+                                "Deleted!",
+                                "Your file has been deleted.",
+                                "success"
+                            ).then(() => {
+                                location.reload(); // Reload page after deletion if needed
+                            });
+                        },
+                        error: function (xhr, status, error) {
+                            console.log('Error:', xhr.responseText); // Log the response for more insights
+                        }
+                    });
+                }
+            });
+        });
+    </script>
     @stack('scripts')
+
 </body>
 
 </html>
