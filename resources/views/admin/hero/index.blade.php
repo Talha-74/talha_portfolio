@@ -32,7 +32,8 @@
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <input type="text" name="title" class="form-control" value="{{ $hero->title }}">
+                                    <input type="text" name="title" class="form-control"
+                                        value="{{ $hero->title ?? '' }}">
                                 </div>
                             </div>
 
@@ -40,7 +41,7 @@
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sub Title</label>
                                 <div class="col-sm-12 col-md-7">
                                     <textarea name="sub_title" style="height: 100px;"
-                                        class="form-control">{{ $hero->sub_title }}</textarea>
+                                        class="form-control">{{ $hero->sub_title ?? '' }}</textarea>
                                 </div>
                             </div>
 
@@ -48,31 +49,35 @@
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Button Text</label>
                                 <div class="col-sm-12 col-md-7">
                                     <input type="text" name="btn_text" class="form-control"
-                                        value="{{ $hero->btn_text }}">
+                                        value="{{ $hero->btn_text ?? ''}}">
                                 </div>
                             </div>
 
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Button URL</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <input type="text" name="btn_url" class="form-control" value="{{ $hero->btn_url }}">
+                                    <input type="text" name="btn_url" class="form-control"
+                                        value="{{ $hero->btn_url ?? ''}}">
                                 </div>
                             </div>
 
-                         @if($hero->image)
-                        <div class="form-group row mb-4">
-                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Previous Image/PDF</label>
-                            <div class="col-sm-12 col-md-7">
-                                @if (in_array(pathinfo($hero->image, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif']))
-                                <img style="max-width: 330px; height: auto;" src="{{ asset($hero->image) }}" alt="">
-                                @elseif (pathinfo($hero->image, PATHINFO_EXTENSION) === 'pdf')
-                                <iframe src="{{ asset($hero->image) }}" style="width:100%; height:500px;" frameborder="0"></iframe>
-                                @else
-                                <p>Unsupported file type.</p>
-                                @endif
+                            @if($hero->image ?? '')
+                            <div class="form-group row mb-4">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Previous
+                                    Image/PDF</label>
+                                <div class="col-sm-12 col-md-7">
+                                    @if (in_array(pathinfo($hero->image ?? '', PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png',
+                                    'gif']))
+                                    <img style="max-width: 330px; height: auto;" src="{{ asset($hero->image) }}" alt="">
+                                    @elseif (pathinfo($hero->image ?? '', PATHINFO_EXTENSION) === 'pdf')
+                                    <iframe src="{{ asset($hero->image) }}" style="width:100%; height:500px;"
+                                        frameborder="0"></iframe>
+                                    @else
+                                    <p>Unsupported file type.</p>
+                                    @endif
+                                </div>
                             </div>
-                        </div>
-                        @endif
+                            @endif
                             {{-- {{ dd(asset($hero->image)) }} --}}
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Background

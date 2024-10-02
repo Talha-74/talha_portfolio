@@ -51,6 +51,8 @@
                 </ul>
             </li>
             <li class="menu-header">Sections</li>
+
+            {{-- Hero --}}
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                     <i class="fas fa-user-shield"></i>
@@ -60,6 +62,12 @@
                     <li><a class="nav-link" href="{{ route('admin.typer-title.index') }}">Typer Title</a></li>
                 </ul>
             </li>
+
+            {{-- Services --}}
+          <li><a class="nav-link" href="{{ route('admin.service.index') }}"><i class="fas fa-wrench"></i> <span>Services</span></a></li>
+
+
+
             {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank
                         Page</span></a></li> --}}
         </ul>
