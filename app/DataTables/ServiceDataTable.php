@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\TyperTitle;
+use App\Models\Service;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class TyperTitleDataTable extends DataTable
+class ServiceDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -24,8 +24,8 @@ class TyperTitleDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
-                return '<a href="' . route('admin.typer-title.edit', $query->id) . '" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                <a href="' . route('admin.typer-title.destroy', $query->id) . '" class="btn btn-danger delete-item"><i class="fas fa-trash"></i></a>';
+                return '<a href="' . route('admin.service.edit', $query->id) . '" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                <a href="' . route('admin.service.destroy', $query->id) . '" class="btn btn-danger delete-item"><i class="fas fa-trash"></i></a>';
             })
             ->setRowId('id');
     }
@@ -33,10 +33,10 @@ class TyperTitleDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\TyperTitle $model
+     * @param \App\Models\Service $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(TyperTitle $model): QueryBuilder
+    public function query(Service $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -49,13 +49,20 @@ class TyperTitleDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('typertitle-table')
+            ->setTableId('service-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
             ->orderBy(0)
             ->selectStyleSingle()
-            ->buttons([]);
+            ->buttons([
+                Button::make('excel'),
+                Button::make('csv'),
+                Button::make('pdf'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            ]);
     }
 
     /**
@@ -66,9 +73,9 @@ class TyperTitleDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-
-            Column::make('id')->width(60),
-            Column::make('title'),
+            Column::make('id')->width(100),
+            Column::make('name')->width(400),
+            Column::make('description'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
@@ -84,6 +91,6 @@ class TyperTitleDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'TyperTitle_' . date('YmdHis');
+        return 'Service_' . date('YmdHis');
     }
 }

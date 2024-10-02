@@ -87,6 +87,7 @@
     <!-- Page Specific JS File -->
     <script src="{{ asset('assets/js/page/features-post-create.js') }}"></script>
     <!-- Page Specific JS File -->
+    <script src="https://cdn.jsdelivr.net/npm/cleave.js"></script>
     <script src="{{ asset('assets/js/page/forms-advanced-forms.js') }}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

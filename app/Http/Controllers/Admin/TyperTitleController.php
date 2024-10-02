@@ -6,11 +6,13 @@ use App\DataTables\TyperTitleDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\TyperTitle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class TyperTitleController extends Controller
 {
     public function index(TyperTitleDataTable $dataTable)
     {
+        
         return  $dataTable->render('admin.typer-title.index');
     }
 
