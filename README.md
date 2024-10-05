@@ -1,12 +1,8 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-  <a href="https://laravel.com" target="_blank">
-    <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
-  </a>
-</p>
-
 ---
+# Portfolio Project - Laravel Developer
+This repository contains my Laravel portfolio project, which showcases my skills as a Laravel developer. As I build this project, I'm learning new techniques and concepts that I'll document here for future reference.
 
 ## New Learnings
 
@@ -24,7 +20,9 @@
         </div>
     </div>
 @endforeach
-
+```
+### What I Learned:
+In this code, I learned how to use the ```{{ $loop->index > 2 ? 'mt-4' : '' }}``` logic inside Blade templates to conditionally apply CSS classes. Specifically, this adds a top margin (mt-4) to cards after the third card (index > 2). This is helpful for customizing layout behavior based on the loop index.
 
 ## Contributing
 
