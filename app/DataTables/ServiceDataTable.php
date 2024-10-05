@@ -25,7 +25,7 @@ class ServiceDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
                 return '<a href="' . route('admin.service.edit', $query->id) . '" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                <a href="' . route('admin.service.destroy', $query->id) . '" class="btn btn-danger delete-item"><i class="fas fa-trash"></i></a>';
+                <a href="' . route('admin.service.destroy', $query->id) . '" class="btn btn-danger delete-item ml-2"><i class="fas fa-trash"></i></a>';
             })
             ->setRowId('id');
     }
@@ -56,12 +56,12 @@ class ServiceDataTable extends DataTable
             ->orderBy(0)
             ->selectStyleSingle()
             ->buttons([
-                Button::make('excel'),
-                Button::make('csv'),
-                Button::make('pdf'),
-                Button::make('print'),
-                Button::make('reset'),
-                Button::make('reload')
+                // Button::make('excel'),
+                // Button::make('csv'),
+                // Button::make('pdf'),
+                // Button::make('print'),
+                // Button::make('reset'),
+                // Button::make('reload')
             ]);
     }
 
@@ -73,9 +73,9 @@ class ServiceDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id')->width(100),
-            Column::make('name')->width(400),
-            Column::make('description'),
+            Column::make('id')->width(50),
+            Column::make('name')->width(300),
+            Column::make('description')->width(500),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

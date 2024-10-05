@@ -53,6 +53,33 @@ class ServiceController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Service $service)
+    {
+        return view('admin.service.edit', ['service' => $service]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Service $service)
+    {
+        $request->validate([
+            'name'          => 'required',
+            'description'   => 'required',
+        ]);
+
+        $service->name = $request->name;
+        $service->description = $request->description;
+
+        $service->save();
+
+        toastr()->success('Service Updated Successfully');
+        return redirect()->route('admin.service.index');
+    }
+
+    /**
      * Display the specified resource.
      */
     public function show(string $id)
@@ -60,27 +87,14 @@ class ServiceController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Service $service)
     {
-        //
+        $service->delete();
+
+        return response()->json(['success' => 'Deleted successfully']);
     }
 }
