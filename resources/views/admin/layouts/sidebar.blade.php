@@ -28,6 +28,7 @@
         </li>
     </ul>
 </nav>
+
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
@@ -64,8 +65,11 @@
             </li>
 
             {{-- Services --}}
-          <li><a class="nav-link" href="{{ route('admin.service.index') }}"><i class="fas fa-wrench"></i> <span>Services</span></a></li>
-
+            <li><a class="nav-link" href="{{ route('admin.service.index') }}"><i class="fas fa-wrench"></i>
+                    <span>Services</span></a></li>
+            {{-- About --}}
+            <li><a class="nav-link" href="{{ route('admin.about.index') }}"><i class="fas fa-user"></i>
+                    <span>About</span></a></li>
 
 
             {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -27,10 +28,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function() {
-Route::resource('hero', HeroController::class);
-Route::resource('typer-title', TyperTitleController::class);
-Route::resource('service', ServiceController::class);
+Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::resource('hero', HeroController::class);
+    Route::resource('typer-title', TyperTitleController::class);
+    Route::resource('service', ServiceController::class);
+    Route::resource('about', AboutController::class);
 });
 
 require __DIR__ . '/auth.php';

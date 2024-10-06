@@ -26,6 +26,7 @@
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -72,10 +73,21 @@
     </script>
 
     <!-- JS Libraies -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.css"
+        integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script src="{{ asset('assets/js/plugins/summernote-bs4.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/jquery.selectric.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/jquery.uploadPreview.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/bootstrap-tagsinput.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/bootstrap-timepicker.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/daterangepicker.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/select2.full.min.js') }}"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-iconpicker/1.10.0/js/bootstrap-iconpicker.bundle.min.js">
+    </script>
     <script src="{{ asset('assets/js/stisla.js') }}"></script>
-
     <!-- Datatables and Button scripts -->
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
@@ -139,7 +151,7 @@
             });
         });
     </script>
-@stack('scripts')
+    @stack('scripts')
 </body>
 
 </html>
