@@ -25,7 +25,7 @@ This repository contains my Laravel portfolio project, which showcases my skills
 In this code, I learned how to use the ```{{ $loop->index > 2 ? 'mt-4' : '' }}``` logic inside Blade templates to conditionally apply CSS classes. Specifically, this adds a top margin (mt-4) to cards after the third card (index > 2). This is helpful for customizing layout behavior based on the loop index.
 
 ### 2. Adding Summernote Text Editor
-![Summernote Text Editor](./summernote.png)
+![Summernote Text Editor](./readme-images/summernote.png)
 
 I integrated the Summernote WYSIWYG editor into my project, which allows for rich text editing in forms. It supports a wide range of formatting options and media embedding, making it easy to style content directly within the application.
 
