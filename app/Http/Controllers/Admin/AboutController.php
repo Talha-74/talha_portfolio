@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\About;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+
+use function App\Helper\demo;
+use function App\Helper\uploadFile;
 
 class AboutController extends Controller
 {
@@ -12,7 +17,8 @@ class AboutController extends Controller
      */
     public function index()
     {
-        return view('admin.about.index');
+        $about = About::first();
+        return view('admin.about.index', compact('about'));
     }
 
     /**
@@ -52,7 +58,29 @@ class AboutController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title'       => ['required'],
+            'description' => ['required'],
+            'image'       => ['required', 'image'],
+            'resume'      => ['mimes:pdf,docs,csv,txt'],
+        ]);
+
+        $about      = About::first();
+        $imagePath  = uploadFile('image', $about);
+        $resumePath = uploadFile('resume', $about);
+
+        About::updateOrCreate(
+            ['id' => $id],
+            [
+                'title'       => $request->title,
+                'description' => $request->description,
+                'image'       => $imagePath,
+                'resume'      => $resumePath,
+            ]
+        );
+
+        toastr()->success('About Section Updated');
+        return redirect()->back();
     }
 
     /**

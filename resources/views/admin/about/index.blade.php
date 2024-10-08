@@ -36,7 +36,7 @@
                                 <div class="col-sm-12 col-md-7">
                                     <div id="image-preview" class="image-preview">
                                         <label for="image-upload" id="image-label">Choose File</label>
-                                        <input type="file" name="image" id="image-upload" />
+                                        <input type="file" name="image" value="{{ old($about->image ?? '') }}" id="image-upload" />
                                     </div>
                                 </div>
                             </div>
@@ -44,21 +44,21 @@
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <input type="text" name="title" class="form-control" value="">
+                                    <input type="text" name="title" value="{{ $about->title ?? '' }}" class="form-control" value="">
                                 </div>
                             </div>
 
                             <div class="form-group row mb-2">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Description</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <textarea class="summernote" id="summernote"></textarea>
+                                    <textarea class="summernote" name="description" id="summernote">{{ $about->description ?? '' }}</textarea>
                                 </div>
                             </div>
 
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Resume</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <input type="file" name="resume" class="form-control" value="">
+                                    <input type="file" name="resume" value="{{ $about->resume ?? '' }}" class="form-control" value="">
                                 </div>
                             </div>
 
