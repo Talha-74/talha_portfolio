@@ -24,18 +24,11 @@ This repository contains my Laravel portfolio project, which showcases my skills
 ### What I Learned:
 In this code, I learned how to use the ```{{ $loop->index > 2 ? 'mt-4' : '' }}``` logic inside Blade templates to conditionally apply CSS classes. Specifically, this adds a top margin (mt-4) to cards after the third card (index > 2). This is helpful for customizing layout behavior based on the loop index.
 
-## Contributing
+### 2. Adding Summernote Text Editor
+![Summernote Text Editor](./summernote.png)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+I integrated the Summernote WYSIWYG editor into my project, which allows for rich text editing in forms. It supports a wide range of formatting options and media embedding, making it easy to style content directly within the application.
 
-## Code of Conduct
+You can learn more about Summernote [here](https://summernote.org/).
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
