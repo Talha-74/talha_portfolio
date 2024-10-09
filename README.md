@@ -31,7 +31,7 @@ I integrated the Summernote WYSIWYG editor into my project, which allows for ric
 
 You can learn more about Summernote [here](https://summernote.org/).
 
-###3. Toastr Notifications
+### 3. Toastr Notifications
 [here](https://github.com/yoeunes/toastr).
 
 
