@@ -36,7 +36,8 @@
                                 <div class="col-sm-12 col-md-7">
                                     <div id="image-preview" class="image-preview">
                                         <label for="image-upload" id="image-label">Choose File</label>
-                                        <input type="file" name="image" value="{{ old($about->image ?? '') }}" id="image-upload" />
+                                        <input type="file" name="image" value="{{ old($about->image ?? '') }}"
+                                            id="image-upload" />
                                     </div>
                                 </div>
                             </div>
@@ -44,21 +45,59 @@
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <input type="text" name="title" value="{{ $about->title ?? '' }}" class="form-control" value="">
+                                    <input type="text" name="title" value="{{ $about->title ?? '' }}"
+                                        class="form-control" value="">
                                 </div>
                             </div>
 
                             <div class="form-group row mb-2">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Description</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <textarea class="summernote" name="description" id="summernote">{{ $about->description ?? '' }}</textarea>
+                                    <textarea class="summernote" name="description"
+                                        id="summernote">{{ $about->description ?? '' }}</textarea>
                                 </div>
                             </div>
 
+                            {{--displaying resume in iframe (readable format) --}}
+                            {{-- @if($about->resume ?? '')
+                            <div class="form-group row mb-4">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Previous
+                                    Image/PDF</label>
+                                <div class="col-sm-12 col-md-7">
+                                    @if (in_array(pathinfo($about->resume ?? '', PATHINFO_EXTENSION), ['jpg', 'jpeg',
+                                    'png',
+                                    'gif']))
+                                    <img style="max-width: 330px; height: auto;" src="{{ asset($about->resume) }}"
+                                        alt="">
+                                    @elseif (pathinfo($about->resume ?? '', PATHINFO_EXTENSION) === 'pdf')
+                                    <iframe src="{{ asset($about->resume) }}" style="width:100%; height:500px;"
+                                        frameborder="0"></iframe>
+                                    @else
+                                    <p>Unsupported file type.</p>
+                                    @endif
+                                </div>
+                            </div>
+                            @endif --}}
+
+                            {{-- displaying resume in icon --}}
+                            @if($about->resume)
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Resume</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <input type="file" name="resume" value="{{ $about->resume ?? '' }}" class="form-control" value="">
+                                    <div>
+                                        <a href="{{ asset($about->resume) }}" target="_blank">
+                                            <i class="fas fa-file-pdf" style="font-size: 80px; color: red;"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
+
+                            <div class="form-group row mb-4">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                                <div class="col-sm-12 col-md-7">
+                                    <input type="file" name="resume" value="{{ $about->resume ?? '' }}"
+                                        class="form-control" value="">
                                 </div>
                             </div>
 
@@ -97,3 +136,16 @@
 </script>
 
 @endsection
+
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('#image-preview').css({
+            'background-image': 'url("{{ asset($about->image) }}")',
+         'background-size': 'cover',
+         'background-position': 'center center',
+
+        })
+    });
+</script>
+@endpush
