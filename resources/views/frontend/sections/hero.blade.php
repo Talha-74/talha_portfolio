@@ -1,4 +1,5 @@
-<header class="header-area parallax-bg" id="home-page" style="background: url('{{ asset($hero->image) }}')">
+<header class="header-area parallax-bg" id="home-page"
+    style="background: url('{{ $hero && $hero->image ? asset($hero->image) : '' }}')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">

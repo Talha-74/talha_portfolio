@@ -61,13 +61,23 @@ class AboutController extends Controller
         $request->validate([
             'title'       => ['required'],
             'description' => ['required'],
-            'image'       => ['required', 'image'],
+            'image'       => ['image'],
             'resume'      => ['mimes:pdf,docs,csv,txt'],
         ]);
 
         $about      = About::first();
-        $imagePath  = uploadFile('image', $about);
-        $resumePath = uploadFile('resume', $about);
+        // If there's no file uploaded, retain the old image path
+        $imagePath = $about->image;
+        if ($request->hasFile('image')) {
+            $imagePath = uploadFile('image', $about);
+        }
+
+        // If there's no file uploaded, retain the old resume path
+        $resumePath = $about->resume;
+        if ($request->hasFile('resume')) {
+            $resumePath = uploadFile('resume', $about);
+        }
+
 
         About::updateOrCreate(
             ['id' => $id],
@@ -83,6 +93,10 @@ class AboutController extends Controller
         return redirect()->back();
     }
 
+    public function resumeDownload(){
+        $about = About::first();
+        return response()->download(public_path($about->resume));
+    }
     /**
      * Remove the specified resource from storage.
      */
