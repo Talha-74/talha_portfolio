@@ -32,6 +32,23 @@ I integrated the Summernote WYSIWYG editor into my project, which allows for ric
 You can learn more about Summernote [here](https://summernote.org/).
 
 ### 3. Toastr Notifications
-[here](https://github.com/yoeunes/toastr).
+[Toastr Notification form backend and on frontend](https://github.com/yoeunes/toastr).
 
+### 4. Displaying PDF's and images on frontend
+```php
+@if($about->resume ?? '')
+    <div class="form-group row mb-4">
+        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Previous Image/PDF</label>
+        <div class="col-sm-12 col-md-7">
+            @if (in_array(pathinfo($about->resume ?? '', PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif']))
+                <img style="max-width: 330px; height: auto;" src="{{ asset($about->resume) }}" alt="">
+            @elseif (pathinfo($about->resume ?? '', PATHINFO_EXTENSION) === 'pdf')
+                <iframe src="{{ asset($about->resume) }}" style="width:100%; height:500px;" frameborder="0"></iframe>
+            @else
+                <p>Unsupported file type.</p>
+            @endif
+        </div>
+    </div>
+@endif
+```
 
