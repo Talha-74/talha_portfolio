@@ -37,6 +37,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('service', ServiceController::class);
     Route::get('resume/download', [AboutController::class, 'resumeDownload'])->name('resume.download');
     Route::resource('about', AboutController::class);
+    Route::get('manifest', function() {
+        return view('manifest');
+    });
 });
 
 require __DIR__ . '/auth.php';
