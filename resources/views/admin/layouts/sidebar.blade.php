@@ -67,10 +67,21 @@
             {{-- Services --}}
             <li><a class="nav-link" href="{{ route('admin.service.index') }}"><i class="fas fa-wrench"></i>
                     <span>Services</span></a></li>
+
             {{-- About --}}
             <li><a class="nav-link" href="{{ route('admin.about.index') }}"><i class="fas fa-user"></i>
                     <span>About</span></a></li>
 
+                    {{-- Portfolio --}}
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
+                            <i class="fas fa-user-shield"></i>
+                            <span>Portfolio</span></a>
+                        <ul class="dropdown-menu" style="display: none;">
+                            <li><a class="nav-link" href="{{ route('admin.category.index') }}">Category</a></li>
+                            <li><a class="nav-link" href="#">#</a></li>
+                        </ul>
+                    </li>
 
             {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank
                         Page</span></a></li> --}}
