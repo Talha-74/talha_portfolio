@@ -21,7 +21,7 @@
                             vel quaerat ipsum perspiciatis neque maxime recusandae fugit.</p> --}}
                     </div>
                     @if($about->resume ?? false)
-                    <a href="{{ route('admin.resume.download') }}" class="button-primary-trans mouse-dir wow fadeInUp"
+                    <a href="{{ route('resume.download') }}" class="button-primary-trans mouse-dir wow fadeInUp"
                         data-wow-delay="0.5s">
                         <span class="icon"><i class="fal fa-download"></i></span>
                         <span class="text">Download Resume</span>
