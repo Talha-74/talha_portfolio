@@ -79,7 +79,7 @@
                             <span>Portfolio</span></a>
                         <ul class="dropdown-menu" style="display: none;">
                             <li><a class="nav-link" href="{{ route('admin.category.index') }}">Category</a></li>
-                            <li><a class="nav-link" href="#">#</a></li>
+                            <li><a class="nav-link" href="#">Portfolio Items</a></li>
                         </ul>
                     </li>
 
