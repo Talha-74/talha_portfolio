@@ -72,6 +72,10 @@
             <li><a class="nav-link" href="{{ route('admin.about.index') }}"><i class="fas fa-user"></i>
                     <span>About</span></a></li>
 
+            {{-- Banks --}}
+            <li><a class="nav-link" href="{{ route('admin.bank.index') }}"><i class="fas fa-user"></i>
+                    <span>Banks</span></a></li>
+
                     {{-- Portfolio --}}
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
