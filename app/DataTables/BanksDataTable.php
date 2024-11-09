@@ -69,6 +69,7 @@ class BanksDataTable extends DataTable
             Column::make('id')->width(60),
             Column::make('name'),
             Column::make('branch'),
+            Column::make('opening_balance'),
             Column::computed('action')
             ->exportable(false)
                 ->printable(false)

@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('banks', function (Blueprint $table) {
+        Schema::create('bank_ledgers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('branch');
-            $table->integer('opening_balance');
+            $table->foreignId('bank_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->string('description');
+            $table->integer('amount');
+            $table->enum('type', ['credit', 'debit']);
+            $table->integer('balance')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('banks');
+        Schema::dropIfExists('bank_ledgers');
     }
 };
