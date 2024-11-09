@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\TyperTitleController;
 use App\Http\Controllers\Admin\BankController;
+use App\Http\Controllers\Admin\BankLedgerController;
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('service', ServiceController::class);
     Route::resource('about', AboutController::class);
     Route::resource('bank', BankController::class);
+    Route::resource('ledger', BankLedgerController::class);
     Route::get('manifest', function () {
         return view('manifest');
     });

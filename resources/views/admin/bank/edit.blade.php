@@ -26,27 +26,34 @@
                         <h4>Update Bank Type</h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.bank.update') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.bank.update', ['bank' => $bank->id]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            {{-- @method('PUT') --}}
+                            @method('PUT')
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Bank Name</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <input type="text" name="name" class="form-control">
+                                    <input type="text" name="name" value="{{ $bank->name }}" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Branch Name</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <input type="text" name="branch"  class="form-control">
+                                    <input type="text" name="branch" value="{{ $bank->branch }}"  class="form-control">
                                 </div>
                             </div>
+
+                            {{-- <div class="form-group row mb-4">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Opening Balance</label>
+                                <div class="col-sm-12 col-md-7">
+                                    <input type="number" min="0" value="{{ $bank->opening_balance }}" name="opening_balance" class="form-control">
+                                </div>
+                            </div> --}}
 
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                                 <div class="col-sm-12 col-md-7">
-                                    <button class="btn btn-primary">Create</button>
+                                    <button class="btn btn-primary">Update</button>
                                 </div>
                             </div>
                         </form>

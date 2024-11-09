@@ -33,15 +33,17 @@ class BankController extends Controller
         $request->validate([
             'name' => 'required',
             'branch' => 'required',
+            'opening_balance' => 'required'
         ]);
 
         Bank::create([
             'name' => $request->name,
             'branch' => $request->branch,
+            'opening_balance' => $request->opening_balance
         ]);
 
         toastr()->success('Created Successfully');
-        return redirect()->back();
+        return redirect()->route('admin.bank.index');
     }
 
     /**
@@ -63,9 +65,23 @@ class BankController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Bank $bank, Request $request)
     {
-        //
+        $request->validate([
+            'name'            => 'required',
+            'branch'          => 'required',
+            // 'opening_balance' => 'required'
+        ]);
+
+        $bank->update([
+            'name'            => $request->name,
+            'branch'          => $request->branch,
+            // 'opening_balance' => $request->opening_balance
+
+        ]);
+
+        toastr()->success('Updated Successfully');
+        return redirect()->route('admin.bank.index');
     }
 
     /**
@@ -73,6 +89,11 @@ class BankController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $bank = Bank::find($id);
+        if ($bank) {
+            $bank->delete();
+            return response()->json(['success' => 'Deleted successfully']);
+        }
+        return response()->json(['error' => 'Item not found'], 404);
     }
 }

@@ -76,6 +76,10 @@
             <li><a class="nav-link" href="{{ route('admin.bank.index') }}"><i class="fas fa-user"></i>
                     <span>Banks</span></a></li>
 
+            {{-- Banks Ledger--}}
+            <li><a class="nav-link" href="{{ route('admin.ledger.index') }}"><i class="fas fa-user"></i>
+                    <span>Banks Ledger</span></a></li>
+
                     {{-- Portfolio --}}
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
